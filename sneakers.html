@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sneakers - GIFLY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e4c59e;
+            color: #322c2b;
+        }
+
+        .navbar {
+            background-color: #322c2b;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #e4c59e !important;
+        }
+
+        .nav-link {
+            color: #e4c59e !important;
+        }
+
+        .dropdown-menu {
+            background-color: #e4c59e;
+        }
+
+        .dropdown-item:hover {
+            background-color: #d2b48c;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 30px;
+            border: 2px solid #322c2b;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            flex-grow: 1;
+            padding: 5px 10px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .product-card {
+            background-color: #e4c59e;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .product-price {
+            font-size: 0.9rem;
+        }
+
+        .modal-content {
+            background-color: #e4c59e;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .modal-body img {
+            border-radius: 15px;
+            max-width: 100%;
+        }
+
+        .product-info h5 {
+            font-weight: bold;
+        }
+
+        .thumbnail-list {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumbnail-list img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .thumbnail-list img.active {
+            border-color: #322c2b;
+        }
+
+        .ukuran span {
+            border: 1px solid #322c2b;
+            border-radius: 8px;
+            padding: 5px 10px;
+            margin-right: 5px;
+            display: inline-block;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GIFLY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" data-bs-toggle="dropdown">Produk</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="flatshoes.html">Flatshoes</a></li>
+                            <li><a class="dropdown-item" href="sneakers.html">Sneakers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="testimoni.html">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="title">SNEAKERS</div>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cari produk...">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#322c2b" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242 1.398a5.5 5.5 0 1 1 0-11 
+                5.5 5.5 0 0 1 0 11z" />
+        </svg>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+        <div class="product-card" data-bs-toggle="modal" data-bs-target="#modalJaqcuel">
+            <img src="img/sneakers.jpg" alt="Jacquel">
+            <div class="product-name">Jaqcuel Sneakers</div>
+            <div class="product-price">99.900</div>
+        </div>
+
+        <div class="product-card" data-bs-toggle="modal" data-bs-target="#modalYeonhan">
+            <img src="img/yeonhan.jpg" alt="Yeonhan">
+            <div class="product-name">Yeonhan Sneakers</div>
+            <div class="product-price">99.900</div>
+        </div>
+
+        <div class="product-card" data-bs-toggle="modal" data-bs-target="#modalEunji">
+            <img src="img/eunji.jpg" alt="Eunji">
+            <div class="product-name">Eunji Sneakers</div>
+            <div class="product-price">99.900</div>
+        </div>
+
+        <div class="product-card" data-bs-toggle="modal" data-bs-target="#modalSoomin">
+            <img src="img/soomin.jpg" alt="Soomin">
+            <div class="product-name">Soomin Sneakers</div>
+            <div class="product-price">99.900</div>
+        </div>
+    </div>
+
+    <!-- Modal Jacquel Flatshoes -->
+    <div class="modal fade" id="modalJaqcuel" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><strong>INFORMASI PRODUK</strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="mainJaqcuelImg" src="img/sneakers.jpg" alt="Jaqcuel" class="img-fluid rounded" />
+                            <div class="thumbnail-list mt-2">
+                                <img src="img/sneakers.jpg" class="active"
+                                    onclick="switchImage('mainJaqcuelImg', this)" />
+                                <img src="img/jaqcuel1.jpg" onclick="switchImage('mainJaqcuelImg', this)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><strong>Jaqcuel Flatshoes</strong></h5>
+                            <p>99.900</p>
+                            <p><strong>Ukuran</strong></p>
+                            <div class="ukuran">
+                                <span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+                            </div>
+                            <p class="mt-3"><strong>Informasi Produk</strong><br />
+                                Bahan: Kulit Sintetis PU<br />
+                                Outsole: Karet<br />
+                                Insole: Sponge Berlubang<br />
+                                Tinggi Insole: +- 3,5 cm
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Yeonhan Flatshoes -->
+    <div class="modal fade" id="modalYeonhan" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><strong>INFORMASI PRODUK</strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="mainYeonhanImg" src="img/yeonhan.jpg" alt="Yeonhan" class="img-fluid rounded" />
+                            <div class="thumbnail-list mt-2">
+                                <img src="img/yeonhan1.jpg" class="active"
+                                    onclick="switchImage('mainYeonhanImg', this)" />
+                                <img src="img/yeonhan2.jpg" onclick="switchImage('mainYeonhanImg', this)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><strong>Yeonhan Flatshoes</strong></h5>
+                            <p>99.900</p>
+                            <p><strong>Ukuran</strong></p>
+                            <div class="ukuran">
+                                <span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+                            </div>
+                            <p class="mt-3"><strong>Informasi Produk</strong><br />
+                                Bahan: Kulit Sintetis PU + Mesh<br />
+                                Outsole: Premium Rubber<br />
+                                Insole: Memory Foam<br />
+                                Tinggi Insole: +- 5 cm
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Eunji Flatshoes -->
+    <div class="modal fade" id="modalEunji" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><strong>INFORMASI PRODUK</strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="mainEunjiImg" src="img/eunji.jpg" alt="Eunji" class="img-fluid rounded" />
+                            <div class="thumbnail-list mt-2">
+                                <img src="img/eunji1.jpg" class="active" onclick="switchImage('mainEunjiImg', this)" />
+                                <img src="img/eunji2.jpg" onclick="switchImage('mainEunjiImg', this)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><strong>Eunji Flatshoes</strong></h5>
+                            <p>99.900</p>
+                            <p><strong>Ukuran</strong></p>
+                            <div class="ukuran">
+                                <span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+                            </div>
+                            <p class="mt-3"><strong>Informasi Produk</strong><br />
+                                Bahan: Kulit Sintetis PU + Mesh Jaring<br />
+                                Outsole: Karet<br />
+                                Insole: Memory Foam<br />
+                                Tinggi Insole: +- 4 cm
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Soomin Flatshoes -->
+    <div class="modal fade" id="modalSoomin" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><strong>INFORMASI PRODUK</strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="mainSoominImg" src="img/soomin.jpg" alt="Soomin" class="img-fluid rounded" />
+                            <div class="thumbnail-list mt-2">
+                                <img src="img/soomin1.jpg" class="active"
+                                    onclick="switchImage('mainSoominImg', this)" />
+                                <img src="img/soomin2.jpg" onclick="switchImage('mainSoominImg', this)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><strong>Soomin Flatshoes</strong></h5>
+                            <p>99.900</p>
+                            <p><strong>Ukuran</strong></p>
+                            <div class="ukuran">
+                                <span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+                            </div>
+                            <p class="mt-3"><strong>Informasi Produk</strong><br />
+                                Bahan: Kulit Sintetis PU + Mesh Jaring<br />
+                                Outsole: HQ Rubber<br />
+                                Insole: Memory Foam<br />
+                                Tinggi Insole: +- 4 cm
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
